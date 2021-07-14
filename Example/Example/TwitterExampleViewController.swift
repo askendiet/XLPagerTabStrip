@@ -24,6 +24,7 @@
 
 import Foundation
 import XLPagerTabStrip
+import UIKit
 
 class TwitterExampleViewController: TwitterPagerTabStripViewController {
     var isReload = false

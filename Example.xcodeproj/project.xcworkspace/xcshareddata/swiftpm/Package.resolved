@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "XLPagerTabStrip",
+        "repositoryURL": "https://github.com/askendiet/XLPagerTabStrip.git",
+        "state": {
+          "branch": null,
+          "revision": "b20450483ffdc77c269afe2f65730c0db7b57de9",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
