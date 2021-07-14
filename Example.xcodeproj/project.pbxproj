@@ -614,7 +614,7 @@
 			repositoryURL = "https://github.com/askendiet/XLPagerTabStrip.git";
 			requirement = {
 				kind = revision;
-				revision = d2acbdd465afd1d484868a2580ee816b24f6e078;
+				revision = 98d892d7e67a817a95fc8d88a85371cc2e87c4fe;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

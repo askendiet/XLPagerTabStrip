@@ -15,6 +15,7 @@ let package = Package(
     targets: [
         .target(
             name: "FXPageControl",
+            resources: [.process("Sources/XLPagerTabStrip/ButtonCell.xib")],
             publicHeadersPath: "."
         ),
         .target(
