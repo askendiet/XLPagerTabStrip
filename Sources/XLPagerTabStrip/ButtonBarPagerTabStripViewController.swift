@@ -25,31 +25,14 @@
 import Foundation
 import UIKit
 
-extension Foundation.Bundle {
-    /// Returns the resource bundle associated with the current Swift module.
-    static var resourceBundle: Bundle = {
-        let candidates = [
-            // Bundle should be present here when the package is linked into an App.
-            Bundle.main.resourceURL,
-            
-            // Bundle should be present here when the package is linked into a framework.
-            Bundle(for: ButtonBarViewCell.self).resourceURL,
-            
-            // For command-line tools.
-            Bundle.main.bundleURL,
-        ]
-        
-        for candidate in candidates {
-            let bundleNames = ["XLPagerTabStrip", "XLPagerTabStrip_XLPagerTabStrip"]
-            for name in bundleNames {
-                let bundlePath = candidate?.appendingPathComponent(name + ".bundle")
-                if let bundle = bundlePath.flatMap(Bundle.init(url:)) {
-                    return bundle
-                }
-            }
-        }
-        fatalError("unable to find bundle named XLPagerTabStrip_XLPagerTabStrip")
-    }()
+final class BundleToken {
+  static let bundle: Bundle = {
+    #if SWIFT_PACKAGE
+    return Bundle.module
+    #else
+    return Bundle(for: BundleToken.self)
+    #endif
+  }()
 }
 
 public enum ButtonBarItemSpec<CellType: UICollectionViewCell> {
@@ -122,7 +105,7 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
     open override func viewDidLoad() {
         super.viewDidLoad()
         
-        let bundle = Bundle.resourceBundle
+        let bundle = BundleToken.bundle
         
         buttonBarItemSpec = .nibFile(nibName: "ButtonCell", bundle: bundle, width: { [weak self] (childItemInfo) -> CGFloat in
             let label = UILabel()
